@@ -94,7 +94,11 @@ extern "C" {
 bool event_destroy(HANDLE event);
 
 bool thread_close(HANDLE thread);
+#ifdef _WIN32
+bool thread_wait(HANDLE thread);
+#else
 void *thread_wait(HANDLE thread);
+#endif
 bool thread_name(const char *name);
 void thread_sleep(uint32_t milliseconds);
 
